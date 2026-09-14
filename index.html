@@ -35,6 +35,56 @@
       width: 250px;
       margin: 10px;
     }
+        .gallery-item img {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .gallery-item img:hover {
+      transform: scale(1.03);
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      text-align: center;
+    }
+    .lightbox-content {
+      margin-top: 5%;
+      max-width: 85%;
+      max-height: 80vh;
+      animation: zoomIn 0.3s;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .lightbox-close, .lightbox-prev, .lightbox-next {
+      position: absolute;
+      top: 50%;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+    }
+    .lightbox-close {
+      top: 20px;
+      right: 35px;
+      font-size: 40px;
+    }
+    .lightbox-prev {
+      left: 20px;
+      transform: translateY(-50%);
+    }
+    .lightbox-next {
+      right: 20px;
+      transform: translateY(-50%);
+    }
     form input, form textarea, form select {
       display: block;
       width: 100%;
@@ -76,9 +126,15 @@
   <section id="gallery">
     <h2>Gallery</h2>
     <p>Here are some photos of our work:</p>
-    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400" alt="Painted room">
-    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400" alt="Drywall work">
-    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400" alt="Renovation work">
+    <a href="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800" class="gallery-item">
+  <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400" alt="Painted room">
+</a>
+<a href="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800" class="gallery-item">
+  <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400" alt="Drywall work">
+</a>
+<a href="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800" class="gallery-item">
+  <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400" alt="Renovation work">
+</a>
   </section>
 
   <hr>
@@ -114,5 +170,12 @@
     <p>&copy; 2026 JP Reno | Drywall, Taping & Painting | jpreno@gmail.com</p>
   </footer>
 
-</body>
+<div id="lightbox" class="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <span class="lightbox-prev">&#10094;</span>
+  <img class="lightbox-content" id="lightbox-img">
+  <span class="lightbox-next">&#10095;</span>
+</div>
+
+<script src="JS/one_page_website.js"></script></body>
 </html>
